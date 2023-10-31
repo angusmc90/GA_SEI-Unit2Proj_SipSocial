@@ -1,5 +1,43 @@
 <%- include('../partials/head') %>
-<%- include('../partials/noNav') %>
+<%- include('../partials/nav-nolinks') %>
+
 <div class="formContainer">
-    
+    <form>
+        <form id="yourID" action="/the-bar" method="POST" autocomplete="off">
+            <label>Profile Name:</label>
+            <input type="text" name="profileName">
+
+            <label>First Name:</label>
+            <input type="text" name="firstName">
+            <label>Last Name:</label>
+            <input type="text" name="lastName">
+
+            <label>Date of Birth:</label>
+            <select id="daySelect" name="birthDate">
+                <option></option>
+            </select>
+            <select id="monthSelect" name="birthMonth">
+                <option></option>
+            </select>
+            <select id="yearSelect" name="birthYear">
+                <option></option>
+            </select>
+
+            <label>Favorite Drink:</label>
+            <select id="drinkOpts" name="drinkSelect">
+                <option></option>
+            </select>
+
+            <label>Least Favorite Drink:</label>
+            <input type="text" name="firstName">
+
+            <label>About Me::</label>
+            <input type="text" name="firstName">
+
+            <input type="submit" value="Let's open a tab">
+
+          </form>
+    </form>
 </div>
+
+<%- include('../partials/footer') %>
