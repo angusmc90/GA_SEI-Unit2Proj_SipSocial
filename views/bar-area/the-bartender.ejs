@@ -1,0 +1,47 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav-nolinks') %>
+
+<div class="formContainer">
+    <form>
+        <form id="yourOrder" action="/patrons-tab" method="POST" autocomplete="off">
+            <label>Drink:</label>
+            <input type="text" name="drinkName">
+
+            <label>Post Title:</label>
+            <input type="text" name="postTitle">
+
+            <label>Drink Pic:</label>
+<!-- add a line here about being paitent until we unlock upload feature -->
+            <input type="text" name="drinkPic">
+
+            <label>Rating</label>
+<!-- figure out how to add a click number of stars moment here-->
+            <input type="text" name="userRating">
+
+            <label>Liqour Type</label>
+            <select id="drinkOpts" name="alcoholType">
+                <option></option>
+            </select>
+
+            <label>Flavor type:</label>
+            <input type="text" name="alcoholDetails">
+
+            <label>Ordered at:</label>
+            <input type="text" name="orderedAt">
+
+            <label>Your Bartender:</label>
+            <input type="text" name="madeBy">
+
+            <label>Would you gety another:</label>
+            <input type="text" name="another">
+
+            <label>Tasting notes:</label>
+            <input type="text" name="userNotes">
+
+            <input type="submit" value="Let's open a tab">
+
+          </form>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>
