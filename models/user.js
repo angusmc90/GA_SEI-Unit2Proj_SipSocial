@@ -7,8 +7,7 @@ const sipsUserSchema = new mongoose.Schema({
     googleId: {
         type: String,
         required: true
-      },
-
+    },
     firstName: String,
     lastName: String,
     profileName: String,

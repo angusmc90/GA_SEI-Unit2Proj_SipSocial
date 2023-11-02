@@ -7,7 +7,7 @@ const sipsDrinkSchema = new mongoose.Schema({
     drinkPic: String,
     user: {
         type: mongoose.Schema.SipsUser.ObjectId,
-        ref: 'User'
+        ref: 'SipsUser'
     },
     userPFName: String,
     userPFPic: String,
