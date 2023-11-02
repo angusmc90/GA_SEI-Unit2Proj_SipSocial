@@ -8,6 +8,7 @@ const sipsUserSchema = new mongoose.Schema({
         type: String,
         required: true
       },
+
     firstName: String,
     lastName: String,
     profileName: String,
@@ -23,4 +24,4 @@ const sipsUserSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('SipSUser', sipsUserSchema)
+module.exports = mongoose.model('SipsUser', sipsUserSchema)
