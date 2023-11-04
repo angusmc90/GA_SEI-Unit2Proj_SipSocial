@@ -18,4 +18,4 @@ const sipsPostCommentsSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('SipsCheersRxn', sipsCheersRxnSchema)
+module.exports = mongoose.model('SipsPostComments', sipsPostCommentsSchema)

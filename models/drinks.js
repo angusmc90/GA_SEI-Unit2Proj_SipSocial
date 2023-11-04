@@ -25,8 +25,10 @@ const sipsDrinkSchema = new mongoose.Schema({
     madeBy: String,
     haveAnother: Boolean,
     tastingNotes: String,
-    cheersIDs: Array,
-    commentIDs: Array
+    // putting the cheers and comments not embededed because future versions
+    // will have them listed outside of the context of 
+    cheersIDs: [{type: mongoose.Schema.Types.ObjectId, ref: 'SipsCheersRxn'}],
+    commentIDs: [{type: mongoose.Schema.Types.ObjectId, ref: 'SipsPostComments'}]
 }, {
     timstamps: true
 });
