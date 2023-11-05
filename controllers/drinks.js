@@ -2,7 +2,7 @@ const DrinkModel = require('../models/drinks');
 const UserModel = require('../models/users')
 
 module.exports = {
-    new: newReview, // take to the page to create an order
+    new: newDrink, // take to the page to create an order
     create, // create the new 
     index, // load all drinks
     show, // read someone's post in the-hightop
@@ -12,6 +12,7 @@ module.exports = {
 async function show (req, res) {
     console.log('ctrlDrnkShow');
     try {
+        // create the drinksDocument based on the drink clicked in the-bar, pull in the related comments and cheer
         const drinkDocument = await DrinkModel.findById(req.params.id)
                                                 .populate('comments')
                                                 .populate('cheers')
@@ -21,4 +22,8 @@ async function show (req, res) {
         console.log(err)
         res.send(err)
     }
+}
+
+function newDrink (req, res) {
+    res.render('/the-bartender')
 }
