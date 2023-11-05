@@ -33,5 +33,4 @@ const sipsDrinkSchema = new mongoose.Schema({
     timstamps: true
 });
 
-
 module.exports = mongoose.model('SipsDrink', sipsDrinkSchema)

@@ -6,12 +6,19 @@ module.exports = {
     create, // create the new 
     index, // load all drinks
     show, // read someone's post in the-hightop
-    delee // delete the user's post
+    deleteDrink, // delete the user's post
 }
 
 async function show (req, res) {
     console.log('ctrlDrnkShow');
     try {
-        const drinkDocument = await DrinkModel.findById(reg.params.id)
+        const drinkDocument = await DrinkModel.findById(req.params.id)
+                                                .populate('comments')
+                                                .populate('cheers')
+                                                .exec();
+        res.render('bar-area/the-hightop', {drink: drinkDocument});
+    } catch (err) {
+        console.log(err)
+        res.send(err)
     }
 }
