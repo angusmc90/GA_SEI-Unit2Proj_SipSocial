@@ -5,7 +5,7 @@ module.exports = {
     new: newDrink, // take to the page to create an order
     create, // create a new drink doc
     index, // load all drinks at the-bar
-    show, // read someone's post in the-hightop
+    show, // show someone's post in the-hightop
     deleteDrink, // delete the user's post
 }
 
@@ -18,7 +18,7 @@ async function show (req, res) {
                                                 .populate('comments')
                                                 .populate('cheers')
                                                 .exec();
-        res.render('bar-area/the-hightop', {drink: drinkDocument});
+        res.render(`bar-area/the-hightop/${drinkDoc._id}`, {drink: drinkDocument});
     } catch (err) {
         console.log(err)
         res.send(err)
@@ -31,7 +31,7 @@ async function index (req, res) {
     try {
         const drinkDocuments = await DrinkModel.find([{}]);
         console.log('drink docs')
-        res.render('drinks/index', { drinkDocs: drinkDocuments});
+        res.render('drinks/the-bar', { drinkDocs: drinkDocuments});
     } catch (err) {
         console.log(err)
         res.send(err);
@@ -66,15 +66,12 @@ async function create (req, res, next) {
     // so there must be away to put this fucntion somewhere else?
     // or can we jsut require this controller on all pages?
 
-
-
-
-
-    // async function deleteDrink(req, res) {
-//     try {
-//         const drinkDoc = DrinkModel.deleteOne({
-//             -id: req.body.id,
-
-//         })
-//     }
-// }
+async function deleteDrink(req, res) {
+    try {
+        await DrinkModel.deleteOne({_id:drinkDoc});
+        res.redirect('/the-bar')
+    } catch(err){
+        console.log(err)
+        res.send(err)
+    }
+}
