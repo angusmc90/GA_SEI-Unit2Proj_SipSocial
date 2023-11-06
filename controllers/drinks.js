@@ -6,6 +6,7 @@ module.exports = {
     create, // "post" a new drink doc
     index, // "get" all of the drink reviews and redirect to the bar
     edit, // "put" changes to that post back to mongoDB
+    update,
     show, // direct & "get" someone's post in the-hightop
     delete: deleteDrink, // "delete" the user's post
 }
