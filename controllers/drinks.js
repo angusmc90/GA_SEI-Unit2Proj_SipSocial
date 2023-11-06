@@ -60,3 +60,21 @@ async function create (req, res, next) {
         res.send(err);
     }
 }
+
+// delete the user's post
+// NOTE TO SELF - this function will exist across three models, 
+    // so there must be away to put this fucntion somewhere else?
+    // or can we jsut require this controller on all pages?
+
+
+
+
+
+    // async function deleteDrink(req, res) {
+//     try {
+//         const drinkDoc = DrinkModel.deleteOne({
+//             -id: req.body.id,
+
+//         })
+//     }
+// }
