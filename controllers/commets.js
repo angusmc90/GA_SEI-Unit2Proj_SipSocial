@@ -2,6 +2,8 @@ const CommentModel = require('../models/comments');
 
 module.exports = {
     create, // "post" a new comment
+    edit, // only serving to refresh the page for now
+    update,
     delete: deleteComment, // "delete" a comment
 }
 

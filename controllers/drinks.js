@@ -47,9 +47,11 @@ function newDrink (req, res) {
 
 // "post" a new drink doc
 async function create (req, res, next) {
-    console.log(req.body, '| FORM CONTENTS');
     console.log(req.user, '| USER DETAILS');
+    //need to caputre the user details in the body of the request
+    
 
+    console.log(req.body, '| FORM CONTENTS');
     //need to change the value of the checkbox to a boolean
     req.body.orderAgainTF = !!req.body.orderAgainTF;
     console.log(req.body);
@@ -67,7 +69,7 @@ async function create (req, res, next) {
 async function deleteDrink(req, res) {
     try {
         await DrinkModel.findByIdAndDelete(req.params.id);
-        res.redirect('/the-bar')
+        res.redirect('/')
     } catch(err){
         console.log(err)
         res.send(err)

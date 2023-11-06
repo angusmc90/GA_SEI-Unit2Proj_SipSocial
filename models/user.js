@@ -8,8 +8,8 @@ const sipsUserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    firstName: String,
-    lastName: String,
+    name: String,
+    email: String,
     profileName: String,
     profilePic: String,
     location: String,
