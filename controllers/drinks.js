@@ -2,9 +2,9 @@ const DrinkModel = require('../models/drinks');
 const UserModel = require('../models/users')
 
 module.exports = {
+    index, // "get" all of the drink reviews and redirect to the bar
     new: newDrink, // "post" a new drink order
     create, // "post" a new drink doc
-    index, // "get" all of the drink reviews and redirect to the bar
     edit, // "put" changes to that post back to mongoDB
     update,
     show, // direct & "get" someone's post in the-hightop
@@ -33,7 +33,7 @@ async function index (req, res) {
     try {
         const drinkDocuments = await DrinkModel.find([{}]);
         console.log('drink docs')
-        res.render('drinks/the-bar', { drinkDocs: drinkDocuments});
+        res.render('bar-area/the-bar/index', { drinkDocs: drinkDocuments});
     } catch (err) {
         console.log(err)
         res.send(err);
@@ -42,7 +42,7 @@ async function index (req, res) {
 
 // "post" a new drink order and "get" all fo teh drink orders, then redirected to the bar 
 function newDrink (req, res) {
-    res.render('/the-bar')
+res.render('bar-area/the-bar/index')
 }
 
 // "post" a new drink doc
@@ -57,7 +57,20 @@ async function create (req, res, next) {
     console.log(req.body);
 
     try {
-        const drinkDoc = await DrinkModel.create(req.body);
+        const drinkDoc = await DrinkModel.create({
+            drinkName: req.body.drinkName,
+            postTitle: req.body.postTitle,
+            // drinkPic: req.body.drinkPic,
+            userPFName: req.user.userPFName,
+            userPFPic: req.user.userPFPic,
+            userRating:  req.body.userRating,
+            alcoholType:  req.body.alcoholType,
+            alcoholDetails: req.body.alcoholDetails,
+            orderedAt: req.body.orderedAt,
+            madeBy: req.body.madeBy,
+            haveAnother:  req.body.haveAnother,
+            tastingNotes: req.body.tastingNotes,
+        });
         console.log(drinkDoc, '| THE DOC JUST CREATED')
     } catch (er) {
         console.log(err)
@@ -74,4 +87,38 @@ async function deleteDrink(req, res) {
         console.log(err)
         res.send(err)
     }
+}
+
+//redirects to the update reciept page
+async function edit(req, res){
+    try{
+        const drinkDoc = await DrinkkModel.findById(req.params.id)
+        console.log(drinkDoc)
+        res.render('../order-with/an-attitude', {
+            orderNum: drinkDoc.req.params.id,
+            badDrink: drinkDoc
+        })
+    } catch (err){
+        res.send(err);
+    }
+}
+
+async function update(req, res){
+    try{
+        const correctedOrder = await DrinkModel.findById(req.params.id);
+        correctedOrder.drinkName = req.body.drinkName
+        correctedOrder.postTitle = req.body.postTitle
+        // correctedOrder.drinkPic = req.body.drinkPic
+        correctedOrder.userRating = req.body.userRating
+        correctedOrder.alcoholType = req.body.alcoholType
+        correctedOrder.alcoholDetails = req.body.alcoholDetails
+        correctedOrder.orderedAt = req.body.orderedAt
+        correctedOrder.madeBy = req.body.madeBy
+        correctedOrder.haveAnother = req.body.haveAnother
+        correctedOrder.tastingNotes = req.body.tastingNotes
+        res.redirect(`/recipes`);
+    } catch (err){
+        res.send(err);
+    }
+
 }

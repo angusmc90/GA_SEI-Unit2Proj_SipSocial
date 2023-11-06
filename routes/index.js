@@ -11,6 +11,7 @@ res.render('index')
 router.get('/auth/google', passport.authenticate(
   'google',
   { scope: ['profile', 'email'] }
+  // come back to see if pic isnt here
 ));
 
 // Google OAuth callback route
