@@ -7,12 +7,12 @@ module.exports = {
     index, // "get" all of the drink reviews and redirect to the bar
     edit, // "put" changes to that post back to mongoDB
     show, // direct & "get" someone's post in the-hightop
-    deleteDrink, // "delete" the user's post
+    delete: deleteDrink, // "delete" the user's post
 }
 
 // direct & "get" someone's post in the-hightop
 async function show (req, res) {
-    console.log('ctrlDrnkShow');
+    console.log('show fn in drinks cntrlr');
     try {
         // create the drinksDocument based on the drink clicked in the-bar, pull in the related comments and cheer
         const drinkDocument = await DrinkModel.findById(req.params.id)
@@ -63,15 +63,10 @@ async function create (req, res, next) {
 }
 
 // delete the user's post
-// NOTE TO SELF - this function will exist across three models, 
-    // so there must be away to put this fucntion somewhere else?
-    // or can we jsut require this controller on all pages?
 async function deleteDrink(req, res) {
     try {
-        await DrinkModel.deleteOne({
-            _id: req.params.id,
-            user: req.user._id
-        });
+        await DrinkModel.findByIdAndDelete(req.params.id);
+        res.redirect('/the-bar')
     } catch(err){
         console.log(err)
         res.send(err)
