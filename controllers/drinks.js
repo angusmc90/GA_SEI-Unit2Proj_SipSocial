@@ -2,14 +2,15 @@ const DrinkModel = require('../models/drinks');
 const UserModel = require('../models/users')
 
 module.exports = {
-    new: newDrink, // take to the page to create an order
-    create, // create a new drink doc
-    index, // load all drinks at the-bar
-    show, // show someone's post in the-hightop
-    deleteDrink, // delete the user's post
+    new: newDrink, // "post" a new drink order
+    create, // "post" a new drink doc
+    index, // "get" all of the drink reviews and redirect to the bar
+    edit, // "put" changes to that post back to mongoDB
+    show, // direct & "get" someone's post in the-hightop
+    deleteDrink, // "delete" the user's post
 }
 
-// read someone's post in the-hightop
+// direct & "get" someone's post in the-hightop
 async function show (req, res) {
     console.log('ctrlDrnkShow');
     try {
@@ -18,14 +19,14 @@ async function show (req, res) {
                                                 .populate('comments')
                                                 .populate('cheers')
                                                 .exec();
-        res.render(`bar-area/the-hightop/${drinkDoc._id}`, {drink: drinkDocument});
+        res.render('/bar-area/the-hightop', {drink: drinkDocument});
     } catch (err) {
         console.log(err)
         res.send(err)
     }
 }
 
-// load all drinks at the-bar
+// "get" all of the drink reviews and redirect to the bar
 async function index (req, res) {
     console.log('index controler')
     try {
@@ -38,12 +39,12 @@ async function index (req, res) {
     }
 }
 
-// take to the page to create an order
+// "post" a new drink order and "get" all fo teh drink orders, then redirected to the bar 
 function newDrink (req, res) {
-    res.render('/the-bartender')
+    res.render('/the-bar')
 }
 
-// create a new drink doc
+// "post" a new drink doc
 async function create (req, res, next) {
     console.log(req.body, '| FORM CONTENTS');
     console.log(req.user, '| USER DETAILS');
@@ -65,11 +66,12 @@ async function create (req, res, next) {
 // NOTE TO SELF - this function will exist across three models, 
     // so there must be away to put this fucntion somewhere else?
     // or can we jsut require this controller on all pages?
-
 async function deleteDrink(req, res) {
     try {
-        await DrinkModel.deleteOne({_id:drinkDoc});
-        res.redirect('/the-bar')
+        await DrinkModel.deleteOne({
+            _id: req.params.id,
+            user: req.user._id
+        });
     } catch(err){
         console.log(err)
         res.send(err)
