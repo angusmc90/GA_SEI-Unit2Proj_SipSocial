@@ -1,20 +1,59 @@
-.brand-logo {
-  margin-left: 15px;
+body {
+  background-image: url('public/images/backgrounds/loginHmpg.jpg');
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
 }
 
-.card .card-content .card-title {
-  margin-bottom: 10px;
+main.hmpg{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-around;
 }
 
-#search-row form {
-  padding-top: 20px;
+main.hmpg div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.student-name {
-  position: relative;
-  top: -5px;
+#mktgSpace{
+  min-width: 50%;
+  max-width: 75%;
+
 }
 
-.collection-item form {
-  margin-top: -5px;
+drink {
+  background-image: url('public/images/paper.png');
+  font-family: 'Courier Prime', Courier, monospace;
+  display: flex;
+  flex-direction: row;
+}
+
+.userGend {
+  font-family: 'Kalam', 'Helvetica', sans-serif;
+}
+
+drink.sz-med .postImg {
+  width: 35%;
+}
+
+drink.sz-med .postBody {
+  width:60%;
+  text-align:left;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+drink.sz-med .postedBy {
+  text-align:left;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight:bold;
+}
+
+img.pfpSmall{
+  width: 30px;
+  border-radius: 50%;
 }
