@@ -8,7 +8,7 @@ var app = require('../server');
 var debug = require('debug')('sei-students:server');
 var http = require('http');
 // destructuring, the key name is becoming a variable name
-const connectDB = require('../config/db')
+const { connectDB } = require('../config/database')
 
 /**
  * Get port from environment and store in Express.

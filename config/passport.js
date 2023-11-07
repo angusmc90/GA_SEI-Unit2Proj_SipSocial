@@ -38,7 +38,7 @@ passport.serializeUser(function(user, cb){
 
 passport.deserializeUser(async function(id, cb) {
 	try {
-		const userDoc = await UserModel.findById(userId);
+		const userDoc = await UserModel.findById(id);
 		// This line of code below
 		cb(null, userDoc) // <------- This is setting the user document to req.user = userDoc passes it 
 		// to one of the controller functions!

@@ -12,6 +12,6 @@ router.get('/:id/edit', isLoggedIn, drinksCtrl.edit);
 router.put('/:id', isLoggedIn, drinksCtrl.update);
 
 router.get('/:id', isLoggedIn, drinksCtrl.show);
-router.delete('/:id', isLoggedIn, drinksCtrl.deleteDrink);
+router.delete('/:id', isLoggedIn, drinksCtrl.delete);
 
 module.exports = router;

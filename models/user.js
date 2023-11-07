@@ -15,7 +15,7 @@ const sipsUserSchema = new mongoose.Schema({
     location: String,
     favDrink: String,
     hateDrink: String,
-    DOB: Date,
+    DOB: Number,
     aboutMe: String,
     drinks: Array
 }, {

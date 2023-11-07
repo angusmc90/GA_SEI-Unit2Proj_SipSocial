@@ -48,8 +48,7 @@ res.render('bar-area/the-bar/index')
 // "post" a new drink doc
 async function create (req, res, next) {
     console.log(req.user, '| USER DETAILS');
-    //need to caputre the user details in the body of the request
-    
+    //using req.body event tho not the best code-wise
 
     console.log(req.body, '| FORM CONTENTS');
     //need to change the value of the checkbox to a boolean

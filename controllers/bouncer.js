@@ -6,9 +6,14 @@ module.exports = {
 }
 
 // "get" the running bar tab
-async function index (req, res) {
+function index (req, res) {
     res.render('/the-bar/index')
 }
+
+// // "your id was checked! Yay!"" 
+// function firstTime (req, res) {
+//     res.render('/the-bar/the-bouncer')
+// }
 
 // "put" the user's added details
 async function updateID(req, res) {

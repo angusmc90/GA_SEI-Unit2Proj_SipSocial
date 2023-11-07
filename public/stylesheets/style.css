@@ -1,59 +1,171 @@
-body {
-  background-image: url('public/images/backgrounds/loginHmpg.jpg');
-  font-family: 'Montserrat', 'Helvetica', sans-serif;
+html, body{
+  height: 100vh;
+  width:100vw;
 }
 
+body {
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% 100%;
+  background-image: url('https://i.imgur.com/yR4FUHz.jpeg');
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
+  font-weight: 200;
+  font-size: 15px;
+  display:flex;
+  flex-wrap: wrap;
+  margin:0;
+}
+
+
 main.hmpg{
+  margin:0;
   display:flex;
   flex-direction: row;
   justify-content: center;
-  align-content: space-around;
+  align-items: center;
+  min-width: 100vw;
+  height:100%;
+}
+
+#mktgSpaceContainer{
+  margin:0;
+  flex-grow:3;
+  height: 100vh;
+  display:flex;
+  align-items: center;
+  align-content: center;
+}
+
+
+main.hmpg{
+  margin:0;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 100vw;
 }
 
 main.hmpg div {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 #mktgSpace{
-  min-width: 50%;
-  max-width: 75%;
-
+  max-width: 87%;
+  height: 100vh;
+  align-items: center;
+  align-content: space-around;
+  gap:25px;
 }
 
 drink {
-  background-image: url('public/images/paper.png');
+  background-image: url('https://i.imgur.com/464mb76.png');
   font-family: 'Courier Prime', Courier, monospace;
   display: flex;
-  flex-direction: row;
+  align-content: flex-start;
+  flex-flow: row nowrap;
+  min-width: 400px;
+  max-width: 650px;
+  margin: 10px;
+}
+
+.postBody div{
+  text-align: center;
+  justify-content: center;
+  padding:5px;
+}
+
+h4.postTitle {
+  margin: 0;
+  padding:5px;
+  font-size: 23px;
 }
 
 .userGend {
   font-family: 'Kalam', 'Helvetica', sans-serif;
 }
 
-drink.sz-med .postImg {
-  width: 35%;
+.postImg{
+  display: flex;
+  flex-grow: 2;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  max-width:40%;
 }
 
-drink.sz-med .postBody {
-  width:60%;
-  text-align:left;
+.postImg img{
+  width:165px;
+}
+
+.postBody {
   display:flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-content: space-between;
+  flex:5;
+  max-width: 60%;
+}
+
+.postBody div {
+  width:95%;
+  flex-wrap: wrap;
 }
 
 drink.sz-med .postedBy {
-  text-align:left;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-around;
+  display: inline-flex;
+  flex-flow: row wrap;
   font-weight:bold;
+  align-items: center;
+  font-size: 15px;
 }
 
 img.pfpSmall{
-  width: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+}
+
+div#loginRail{
+  background-color: rgba(56, 21, 154, 0.85);
+  flex-grow:1;
+  max-width:450px;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  gap:105px;
+  height:100%;
+  color:#ffffff;
+  display: flex;
+}
+
+#loginRail div {
+  display:flex;
+  align-items: center;
+  text-align: center;
+}
+
+#loginRail img{
+  width: 250px;
+}
+
+.hmpgLogo {
+  width: 250px;
+}
+
+.appName{
+  font-family: 'Galada', 'Helvetica', sans-serif;
+  font-size: 60px;
+  margin: 0;
+}
+
+.appSlogan{
+  font-family: 'East Sea Dokdo';
+  font-size:35px;
+  margin: 0;
+}
+
+#about{
+  font-weight:200;
 }

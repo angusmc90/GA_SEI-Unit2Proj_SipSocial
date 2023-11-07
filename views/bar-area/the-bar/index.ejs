@@ -1,9 +1,13 @@
 <%- include('../../partials/header') %>
 <%- include('../../partials/nav') %>
 
+<!-- 
+SUB NAV for eventual filtering of categories
+
 <subnav>
-    Beer | wine | vodka
-</subnav>
+Beer | wine | vodka
+</subnav> 
+-->
 
 <main>
 
@@ -13,26 +17,41 @@
 
     <div class="postFeed">
 
+<!-- 
+ONLY WANT 10-ish TO LOAD AT A TIME
+Declare var to catch number of drinks lengthDrinks
+--is this too much? should i put it in another array?
+--maybe one of just drink._id and use that populater the news feed from UserDoc?
+
+Pass that into a for loop
+The loop will render the first N, and subtract N from lengthDrinkswhen returning the HTML
+when the lengthDrinks = 0, do not render a "load more"/"nxt pg" button
+etc
+-->
+
+
         <drink class="sz-med">
             <section class="postImg">
-                <!-- img src -->
+                <!-- keeping off for MVP -->
+                <img src="https://i.imgur.com/10d9utM.jpeg">
             </section>
-
             <section class="postBody">
-                <div class="postTitle">
-                    drinkName | postTitle
+                <div>
+                    <h4 class="postTitle">
+                        Meow-zy IPA<br>Purrrr-fect Beer
+                    </h4>
                 </div>
                 <div class="postedBy">
-                    PIC | profileName | *****
+                    <img src="###" class="pfpSmall"> 
+                    <h3 class="pfName"> | Ferdinand Thee Bull | *****</h4>
                 </div>
-                <div class="postTxt">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la
+                <div class="postTxt userGend">
+                    I'm having such a great time on Sips Social! Meow meow meow meow meow meow meow! Meow'nt meow meows!
                 </div>
-                <!-- <div class="postBtns">cheers & edit btns?</div> -->
             </section>
-
         </drink>
 
+        
     </div>
 
   
