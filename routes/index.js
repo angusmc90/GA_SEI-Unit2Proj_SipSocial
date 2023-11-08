@@ -18,7 +18,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/drinks',
+    successRedirect : '/bouncer/new',
     // Adding the if in v2
     failureRedirect : '/index' //  UPDATE THIS, where do you want the client to go if login fails
   }

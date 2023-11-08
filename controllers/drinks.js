@@ -29,22 +29,13 @@ async function show (req, res) {
 
 // "get" all of the drink reviews and redirect to the bar
 async function index (req, res, next) {
-    const user = req.body
-    const profileName = req.params.profileName;
-    if (profileName === 'newUser') {
-        res.redirect('/bouncer/checkID', user)
-        // passing along the user user to implement auto-fill in future versions
-    } else {
-        next()
-    }
-};
-
-async function countTill (req,res) {
     console.log('index controler')
     try {
         const drinkDocuments = await DrinkModel.find([{}]);
         console.log('drink docs')
-        res.render('/', { drinkDocs: drinkDocuments});
+        res.render('/bar-area/the-bar/index', { 
+            drinkDocs: drinkDocuments
+        });
     } catch (err) {
         console.log(err)
         res.send(err);
