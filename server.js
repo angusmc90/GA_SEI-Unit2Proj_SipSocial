@@ -13,6 +13,8 @@ const indexRouter = require('./routes/index');
 const bouncerRouter = require('./routes/bouncer');
 const commentsRouter = require('./routes/comments');
 const drinksRouter = require('./routes/drinks');
+const MongoStore = require('connect-mongo');
+
 
 //leaving in for v2
 //const cheersRouter = require('./routes/cheers');
@@ -40,6 +42,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 // mount the session middleware
 app.use(session({
+  store: MongoStore.create({
+    mongoUrl: process.env.DATABASE_URL
+  }),
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true

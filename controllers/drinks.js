@@ -17,9 +17,9 @@ async function show (req, res) {
     try {
         // create the drinksDocument based on the drink clicked in the-bar, pull in the related comments and cheer
         const drinkDocument = await DrinkModel.findById(req.params.id)
-                                                // .populate('comments')
-                                                // .populate('cheers')
-                                                // .exec();
+                                                .populate('comments')
+                                                .populate('cheers')
+                                                .exec();
         res.render('/bar-area/the-hightop', {drink: drinkDocument});
     } catch (err) {
         console.log(err)

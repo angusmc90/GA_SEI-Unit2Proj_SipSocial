@@ -2,12 +2,38 @@ const UserModel = require('../models/user')
 
 module.exports = {
     index,
+    create,ç
     // firstTime,
-    update: updateID,
+    //update: updateID,
 }
 
+async function index (req,res) {
+    try {
+        const newUser = await UserModel.findById(req.params.id);
+        res.render('/bar-area/the-bouncer',
+        {
+            user: newUser
+        });
+    } catch (err) {
+        console.log(err);
+        res.send(err);
+    }
+}
+
+async function create(req, res) {
+    try {
+        const userDoc = await SipsUser.create(req.body);
+        userDoc.userId = req.user._id;
+        res.redriect('/bouncer');
+    } catch (err) {
+        console.log(err)
+        res.send(err) 
+    }
+}
+
+
 // "get" the running bar tab
-async function index (req, res, next) {
+async function visitCheck (req, res, next) {
     // check if this is the user's first vist
     // will do this if they chose a profileName
     try {
@@ -25,12 +51,12 @@ function firstTime (req, res){
     let user = req.body;
     let profileName = user.profileName;
     if (profileName) {
-        res.render('/the-bar/index')
+        res.redirect('/index')
     } else {
-        res.render('/')
+        res.render('/bar-area/the-bouncer')
     }
 };
 
 // "put" the user's added details
-async function updateID(req, res) {
-}
+// async function updateID(req, res) {
+// }

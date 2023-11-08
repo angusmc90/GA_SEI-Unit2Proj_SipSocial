@@ -26,7 +26,7 @@ const sipsDrinkSchema = new mongoose.Schema({
     // will have them listed outside of the context of 
     // cheersIDs: [{type: mongoose.Schema.Types.ObjectId, ref: 'SipsCheersRxn'}],
     commentIDs: Array,
-    // commentIDs: [{type: mongoose.Schema.Types.ObjectId, ref: 'SipsPostComments'}]
+    commentIDs: [{type: mongoose.Schema.Types.ObjectId, ref: 'SipsPostComments'}]
 }, {
     timstamps: true
 });
