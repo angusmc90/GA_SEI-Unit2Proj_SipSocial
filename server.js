@@ -8,7 +8,13 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
-const indexRoutes = require('./routes/index');
+const indexRouter = require('./routes/index');
+const bouncerRouter = require('./routes/bouncer');
+const commentsRouter = require('./routes/comments');
+const drinksRouter = require('./routes/drinks');
+
+//leaving in for v2
+//const cheersRouter = require('./routes/cheers');
 
 
 // create the Express app
@@ -50,7 +56,11 @@ app.use(function (req, res, next) {
 });
 
 // mount all routes with appropriate base paths
-app.use('/', indexRoutes);
+app.use('/', indexRouter);
+app.use('/', bouncerRouter);
+app.use('/bar-area/reciepts', commentsRouter);
+app.use('/', drinksRouter);
+// prob could have orgnized my foler strucutre differently to use the drinksRouter in one spot rather than all?
 
 
 // invalid request, send 404 page
