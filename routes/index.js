@@ -4,8 +4,8 @@ const passport = require('passport');
 
 // The root route renders our only view
 router.get('/', function(req, res) {
-res.render('index')
-});
+  res.redirect('/index')
+})
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
@@ -18,7 +18,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/bouncer/new',
+    successRedirect : '/bouncer',
     // Adding the if in v2
     failureRedirect : '/index' //  UPDATE THIS, where do you want the client to go if login fails
   }

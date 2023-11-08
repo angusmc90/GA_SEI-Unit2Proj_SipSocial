@@ -4,10 +4,7 @@ const mongoose = require('mongoose');
 const sipsUserSchema = new mongoose.Schema({
     // Creating googleID first
     // There won't be any log-ins without OAuth
-    googleId: {
-        type: String,
-        required: true
-    },
+    googleId: String,
     name: String,
     email: String,
     profileName: {
