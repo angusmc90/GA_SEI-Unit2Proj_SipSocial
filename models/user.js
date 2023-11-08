@@ -10,7 +10,10 @@ const sipsUserSchema = new mongoose.Schema({
     },
     name: String,
     email: String,
-    profileName: String,
+    profileName: {
+        type: String,
+        default: "newUser",
+    },
     profilePic: String,
     location: String,
     favDrink: String,

@@ -29,10 +29,11 @@ async function show (req, res) {
 
 // "get" all of the drink reviews and redirect to the bar
 async function index (req, res, next) {
-    const user = await UserModel.findById(req.params.id);
-    const profileName = user.profileName;
-    if (!profileName) {
-        res.redirect('/bouncer', user)
+    const user = req.body
+    const profileName = req.params.profileName;
+    if (profileName === 'newUser') {
+        res.redirect('/bouncer/checkID', user)
+        // passing along the user user to implement auto-fill in future versions
     } else {
         next()
     }
@@ -50,7 +51,8 @@ async function countTill (req,res) {
     }
 }
 
-// "post" a new drink order and "get" all fo teh drink orders, then redirected to the bar 
+// "post" a new drink order and "get" all fo the drink orders, then redirected to the bar 
+//do i even need this fun with whats going on above?
 function newDrink (req, res) {
 res.render('bar-area/the-bar/index')
 }

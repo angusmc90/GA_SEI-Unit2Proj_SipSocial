@@ -4,7 +4,7 @@ const drinksCtrl = require('../controllers/drinks');
 const isLoggedIn = require('../config/auth');
 
 
-router.get('/', isLoggedIn, drinksCtrl.index);
+router.get('/drinks', drinksCtrl.index);
 router.get('/new', drinksCtrl.new);
 router.post('/', isLoggedIn, drinksCtrl.createDoc);
 

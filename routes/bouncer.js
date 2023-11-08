@@ -3,8 +3,8 @@ const router = express.Router();
 const bouncerCtrl = require('../controllers/bouncer');
 
 
-router.get('/bouncer', bouncerCtrl.index);
-router.post('/', bouncerCtrl.create);
+router.get('/bouncer/checkID', bouncerCtrl.index);
+router.post('/bouncer', bouncerCtrl.create);
 // router.get('/bar-area/the-boucer', drinksCtrl.firstTime);
 
 

@@ -7,30 +7,15 @@ module.exports = {
     //update: updateID,
 }
 
-async function index (req,res, next) {
-    const user = await UserModel.findById(req.params.id);
-    const profileName = user.profileName;
-    if (profileName) {
-        res.render('/bar-area/the-bouncer')
-    } else {
-        res.redirect('/bounder')
-    }
-
-}
-
-function userRecognized (req, res) {
-    const newUer = req.body;
-    res.render('/bar-area/the-bouncer',
-        {
-            user: newUser
-        });
+function index (req,res) {
+    res.render('/bar-area/the-bouncer')
 }
 
 async function create(req, res) {
     try {
         const userDoc = await SipsUser.create(req.body);
         userDoc.userId = req.user._id;
-        res.redriect('/bouncer');
+        res.redriect('/drinks');
     } catch (err) {
         console.log(err)
         res.send(err) 
