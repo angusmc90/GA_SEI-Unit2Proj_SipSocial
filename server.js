@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
+
 const indexRouter = require('./routes/index');
 const bouncerRouter = require('./routes/bouncer');
 const commentsRouter = require('./routes/comments');
@@ -58,7 +59,7 @@ app.use(function (req, res, next) {
 // mount all routes with appropriate base paths
 app.use('/', indexRouter);
 app.use('/', bouncerRouter);
-app.use('/bar-area/reciepts', commentsRouter);
+app.use('/bar-area/recipts', commentsRouter);
 app.use('/', drinksRouter);
 // prob could have orgnized my foler strucutre differently to use the drinksRouter in one spot rather than all?
 

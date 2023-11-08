@@ -4,18 +4,12 @@ const mongoose = require('mongoose');
 const sipsPostCommentsSchema = new mongoose.Schema({
     userPFName: String,
     userPFPic: String,
+    userID: String,
     commentBody: String,
-    userID: {
-        type: mongoose.Schema.SipsUser.ObjectId,
-        ref: 'SipsUser'
-    },
-    postID: {
-        type: mongoose.Schema.SipsDrink.ObjectId,
-        ref: 'SipsDrink'
-    }
+    postID: String,
 }, {
     timstamps: true
 });
 
 
-module.exports = mongoose.model('SipsPostComments', sipsPostCommentsSchema)
+module.exports = mongoose.model('SipsPostComment', sipsPostCommentsSchema)

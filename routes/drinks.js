@@ -5,8 +5,8 @@ const isLoggedIn = require('../config/auth');
 
 
 router.get('/', isLoggedIn, drinksCtrl.index);
-router.get('/new', isLoggedIn, drinksCtrl.new);
-router.post('/', isLoggedIn, drinksCtrl.create);
+router.get('/new', drinksCtrl.new);
+router.post('/', isLoggedIn, drinksCtrl.createDoc);
 
 router.get('/:id/edit', isLoggedIn, drinksCtrl.edit);
 router.put('/:id', isLoggedIn, drinksCtrl.update);

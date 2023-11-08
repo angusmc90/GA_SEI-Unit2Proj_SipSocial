@@ -1,4 +1,10 @@
 <nav>
-    <a href="/bar-area/the-bar">World Feed</a> |<!-- Friends |--> <a href=`/patrons-tab/${userDoc._id}`>My Profile</a> | <a href="/logout">Logout</a>a>
+    <% if (user) {%>
+        <a href="/bar-area/the-bar">World Feed</a>
+        <a href=`/patrons-tab/${userDoc._id}`>My Profile</a>
+        <a href="/logout">Logout</a>
+    <% } else { %>
+        <a href="">Login</a>
+    <% } %>
 </nav>
 <main>

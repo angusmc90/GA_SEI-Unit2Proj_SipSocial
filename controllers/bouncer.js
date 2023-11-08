@@ -1,4 +1,4 @@
-const UserModel = require('../models/users')
+const UserModel = require('../models/user')
 
 module.exports = {
     index,
@@ -11,7 +11,7 @@ async function index (req, res, next) {
     // check if this is the user's first vist
     // will do this if they chose a profileName
     try {
-        const user = await UserModel.findById(req.params.id);
+        let user = await UserModel.findById(req.params.id);
         next(user)
     } catch (err) {
         console.log(err)
@@ -22,8 +22,8 @@ async function index (req, res, next) {
 // I commented this function from the exports 
 // since we don't need to be exporting it at this time 
 function firstTime (req, res){
-    const user = req.body;
-    const profileName = user.profileName;
+    let user = req.body;
+    let profileName = user.profileName;
     if (profileName) {
         res.render('/the-bar/index')
     } else {

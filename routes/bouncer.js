@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
+const bouncerCtrl = require('../controllers/bouncer');
 
 
-router.get('/bouncer', isLoggedIn, drinksCtrl.index);
-router.get('/bar-area/the-boucer', isLoggedIn, drinksCtrl.firstTime);
+router.get('/bouncer', bouncerCtrl.index);
+// router.get('/bar-area/the-boucer', drinksCtrl.firstTime);
 
 
 module.exports = router;

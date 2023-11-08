@@ -5,10 +5,7 @@ const sipsDrinkSchema = new mongoose.Schema({
     drinkName: String,
     postTitle: String,
     drinkPic: String,
-    user: {
-        type: mongoose.Schema.SipsUser.ObjectId,
-        ref: 'SipsUser'
-    },
+    userID: String,
     userPFName: String,
     userPFPic: String,
     userRating: {
@@ -28,7 +25,8 @@ const sipsDrinkSchema = new mongoose.Schema({
     // putting the cheers and comments not embededed because future versions
     // will have them listed outside of the context of 
     // cheersIDs: [{type: mongoose.Schema.Types.ObjectId, ref: 'SipsCheersRxn'}],
-    commentIDs: [{type: mongoose.Schema.Types.ObjectId, ref: 'SipsPostComments'}]
+    commentIDs: Array,
+    // commentIDs: [{type: mongoose.Schema.Types.ObjectId, ref: 'SipsPostComments'}]
 }, {
     timstamps: true
 });

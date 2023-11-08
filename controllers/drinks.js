@@ -1,10 +1,10 @@
 const DrinkModel = require('../models/drinks');
-const UserModel = require('../models/users')
+const UserModel = require('../models/user')
 
 module.exports = {
     index, // "get" all of the drink reviews and redirect to the bar
-    new: newDrink, // "post" a new drink order
-    create, // "post" a new drink doc
+    new: newDrink, // "post" a new drink order TO THE VIEW
+    createDoc, // "post" a new drink doc to DB
     edit, // "put" changes to that post back to mongoDB
     update,
     show, // direct & "get" someone's post in the-hightop
@@ -17,9 +17,9 @@ async function show (req, res) {
     try {
         // create the drinksDocument based on the drink clicked in the-bar, pull in the related comments and cheer
         const drinkDocument = await DrinkModel.findById(req.params.id)
-                                                .populate('comments')
-                                                .populate('cheers')
-                                                .exec();
+                                                // .populate('comments')
+                                                // .populate('cheers')
+                                                // .exec();
         res.render('/bar-area/the-hightop', {drink: drinkDocument});
     } catch (err) {
         console.log(err)
@@ -46,7 +46,7 @@ res.render('bar-area/the-bar/index')
 }
 
 // "post" a new drink doc
-async function create (req, res, next) {
+async function createDoc (req, res, next) {
     console.log(req.user, '| USER DETAILS');
     //using req.body event tho not the best code-wise
 
@@ -60,6 +60,7 @@ async function create (req, res, next) {
             drinkName: req.body.drinkName,
             postTitle: req.body.postTitle,
             // drinkPic: req.body.drinkPic,
+            userID: req.body.userID,
             userPFName: req.user.userPFName,
             userPFPic: req.user.userPFPic,
             userRating:  req.body.userRating,
