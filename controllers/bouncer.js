@@ -2,22 +2,28 @@ const UserModel = require('../models/user')
 
 module.exports = {
     index,
-    create,ç
+    create,
     // firstTime,
     //update: updateID,
 }
 
-async function index (req,res) {
-    try {
-        const newUser = await UserModel.findById(req.params.id);
-        res.render('/bar-area/the-bouncer',
+async function index (req,res, next) {
+    const user = await UserModel.findById(req.params.id);
+    const profileName = user.profileName;
+    if (profileName) {
+        res.render('/bar-area/the-bouncer')
+    } else {
+        res.redirect('/bounder')
+    }
+
+}
+
+function userRecognized (req, res) {
+    const newUer = req.body;
+    res.render('/bar-area/the-bouncer',
         {
             user: newUser
         });
-    } catch (err) {
-        console.log(err);
-        res.send(err);
-    }
 }
 
 async function create(req, res) {

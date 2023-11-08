@@ -28,12 +28,22 @@ async function show (req, res) {
 }
 
 // "get" all of the drink reviews and redirect to the bar
-async function index (req, res) {
+async function index (req, res, next) {
+    const user = await UserModel.findById(req.params.id);
+    const profileName = user.profileName;
+    if (!profileName) {
+        res.redirect('/bouncer', user)
+    } else {
+        next()
+    }
+};
+
+async function countTill (req,res) {
     console.log('index controler')
     try {
         const drinkDocuments = await DrinkModel.find([{}]);
         console.log('drink docs')
-        res.render('bar-area/the-bar/index', { drinkDocs: drinkDocuments});
+        res.render('/', { drinkDocs: drinkDocuments});
     } catch (err) {
         console.log(err)
         res.send(err);
